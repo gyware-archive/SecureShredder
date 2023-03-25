@@ -1,6 +1,6 @@
 ' Auto Updates
 Set readCode = CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName)
-code = readcode.ReadAll
+code = readCode.ReadAll
 
 Set xhr = CreateObject("MSXML2.XMLHTTP")
 xhr.Open "GET", "https://raw.githubusercontent.com/gyware/SecureDelete/main/SecureDelete.vbs", False
