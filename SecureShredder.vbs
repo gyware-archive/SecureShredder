@@ -7,7 +7,7 @@ xhr.Send
 updateCode = xhr.ResponseText
 
 If code <> updateCode Then
-	button = MsgBox("An update is available for SecureShredder. Would you like to download it?", vbInformation + vbOKCancel + vbSystemModal, "Update")
+	button = MsgBox("An update is available for SecureShredder. Would you like to download it?", vbInformation + vbYesNo + vbSystemModal, "Update")
 	If button = vbOK Then
 		Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
 	End If
