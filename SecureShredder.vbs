@@ -2,7 +2,7 @@
 code = CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 1).ReadAll()
 
 Set xhr = CreateObject("MSXML2.XMLHTTP")
-xhr.Open "GET", "https://raw.githubusercontent.com/gyware/SecureShredder/main/SecureShredder.vbs", False
+xhr.Open "GET", "http://raw.githubusercontent.com/gyware/SecureShredder/main/SecureShredder.vbs", False
 xhr.Send
 updateCode = xhr.ResponseText
 
