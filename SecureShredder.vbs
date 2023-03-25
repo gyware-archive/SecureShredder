@@ -85,7 +85,7 @@ htaContent = "<!DOCTYPE html>" & vbCrLf & _
              "    </style>" & vbCrLf & _
              "    <text x=""40"" y=""35"" class=""heavy"">secure</text>" & vbCrLf & _
              "    <text x=""65"" y=""55"" class=""strong"">Shredder</text>" & vbCrLf & _
-             "    <text x=""170"" y=""55"" class=""small"">VBScript</text>" & vbCrLf & _
+             "    <text x=""185"" y=""55"" class=""small"">VBScript</text>" & vbCrLf & _
              "  </svg>" & vbCrLf & _
              "  <script>" & vbCrLf & _
              "    document.onkeydown = function(evt) {" & vbCrLf & _
