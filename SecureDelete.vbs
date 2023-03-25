@@ -13,7 +13,7 @@ If code <> updateCode Then
 	strText = strText & "$notify = new-object system.windows.forms.notifyicon" & VbCrlf
 	strText = strText & "$notify.icon = [System.Drawing.SystemIcons]::Information" & vbCrLf
 	strText = strText & "$notify.visible = $true" & vbCrLf
-	strText = strText & "$notify.showballoontip(10,'Login Automation Completed','Your script ran successfully!',[system.windows.forms.tooltipicon]::Info)"
+	strText = strText & "$notify.showballoontip(10,'SecureDelete is updating','Please wait...',[system.windows.forms.tooltipicon]::Info)"
 	Call CreateObject("WScript.Shell").Run("powershell -noexit -WindowStyle hidden """ & strText & """", 0, False)
 
 	Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
