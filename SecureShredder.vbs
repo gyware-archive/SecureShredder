@@ -57,8 +57,8 @@ htaContent = "<!DOCTYPE html>" & vbCrLf & _
              "  />" & vbCrLf & _
              "  <meta http-equiv=""X-UA-Compatible"" content=""IE=9"" />" & vbCrLf & _
              "  <script>" & vbCrLf & _
-             "    window.resizeTo(600, 300);" & vbCrLf & _
-			 "    window.moveTo((screen.width - 600) / 2, (screen.height - 300) / 2);" & vbCrLf & _
+             "    window.resizeTo(700, 300);" & vbCrLf & _
+			 "    window.moveTo((screen.width - 700) / 2, (screen.height - 300) / 2);" & vbCrLf & _
              "    document.title = ""SecureShredder"";" & vbCrLf & _
              "    setTimeout(function() { window.close(); }, 1500);" & vbCrLf & _
              "  </script>" & vbCrLf & _
