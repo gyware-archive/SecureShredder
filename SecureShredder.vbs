@@ -32,7 +32,7 @@ lnk.WorkingDirectory = objShell.ExpandEnvironmentStrings("%AppData%\Microsoft\Wi
 lnk.Save
 Set lnk = Nothing
 
-Set lnk = objShell.CreateShortcut(objShell.SpecialFolders("Desktop"))
+Set lnk = objShell.CreateShortcut(objShell.SpecialFolders("Desktop") & "\SecureShredder.lnk")
 lnk.TargetPath = WScript.ScriptFullName
 lnk.Arguments = ""
 lnk.Description = "Delete your files securely to prevent recovery."
