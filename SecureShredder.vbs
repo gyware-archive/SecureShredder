@@ -7,15 +7,10 @@ xhr.Send
 updateCode = xhr.ResponseText
 
 If code <> updateCode Then
-	strText = strText & "[reflection.assembly]::loadwithpartialname('System.Drawing')" & vbCrLf
-	strText = strText & "[reflection.assembly]::loadwithpartialname('System.Windows.Forms')" & vbCrLf
-	strText = strText & "$notify = new-object system.windows.forms.notifyicon" & VbCrlf
-	strText = strText & "$notify.icon = [System.Drawing.SystemIcons]::Information" & vbCrLf
-	strText = strText & "$notify.visible = $true" & vbCrLf
-	strText = strText & "$notify.showballoontip(10,'SecureDelete is updating','Please wait...',[system.windows.forms.tooltipicon]::Info)"
-	Call CreateObject("WScript.Shell").Run("powershell -noexit -WindowStyle hidden """ & strText & """", 0, False)
-
-	Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
+	button = MsgBox("An update is available for SecureShredder. Would you like to download it?", vbInformation + vbOKCancel + vbSystemModal, "Update")
+	If button <> vbOK Then
+		Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
+	End If
 End If	
 
 
@@ -136,8 +131,6 @@ End If
 button = MsgBox("Are you sure to permanently delete the selected file(s)?", vbInformation + vbOKCancel + vbSystemModal, "Confirm")
 If button <> vbOK Then
 	WScript.Quit
-ElseIf button = vbMsgBoxHelpButton Then
-	Wscript.echo ""
 End If
 
 Set objFSO = CreateObject("Scripting.FileSystemObject")
