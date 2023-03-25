@@ -3,7 +3,7 @@ Set readCode = CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.S
 code = readcode.ReadAll
 
 Set xhr = CreateObject("MSXML2.XMLHTTP")
-xhr.Open "GET", "http://raw.githubusercontent.com/gyware/SecureDelete/SecureDelete.vbs"
+xhr.Open "GET", "https://raw.githubusercontent.com/gyware/SecureDelete/main/SecureDelete.vbs", False
 xhr.Send
 updateCode = xhr.ResponseText
 
@@ -16,7 +16,7 @@ If code <> updateCode Then
 	strText = strText & "$notify.showballoontip(10,'Login Automation Completed','Your script ran successfully!',[system.windows.forms.tooltipicon]::Info)"
 	Call CreateObject("WScript.Shell").Run("powershell -noexit -WindowStyle hidden """ & strText & """", 0, False)
 
-	Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, ForWriting.WriteLine(updateCode))
+	Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
 End If	
 
 ' Shortcut Creation
@@ -25,7 +25,7 @@ Set lnk = objShell.CreateShortcut(CreateObject("WScript.Shell").ExpandEnvironmen
 lnk.TargetPath = WScript.ScriptFullName
 lnk.Arguments = ""
 lnk.Description = "SecureDelete"
-lnk.HotKey = "ALT+CTRL+D"
+lnk.HotKey = "CTRL+ALT+D"
 lnk.IconLocation = "SecEdit.exe"
 lnk.WindowStyle = "1"
 lnk.WorkingDirectory = CreateObject("WScript.Shell").ExpandEnvironmentStrings("%AppData%\Microsoft\Windows\SendTo\")
