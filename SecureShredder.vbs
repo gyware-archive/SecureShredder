@@ -26,17 +26,6 @@ lnk.WorkingDirectory = objShell.ExpandEnvironmentStrings("%AppData%\Microsoft\Wi
 lnk.Save
 Set lnk = Nothing
 
-Set lnk = objShell.CreateShortcut(objShell.SpecialFolders("Desktop") & "\SecureShredder.lnk")
-lnk.TargetPath = WScript.ScriptFullName
-lnk.Arguments = ""
-lnk.Description = "Delete your files securely to prevent recovery."
-lnk.HotKey = "CTRL+SHIFT+S"
-lnk.IconLocation = "SecEdit.exe"
-lnk.WindowStyle = "1"
-lnk.WorkingDirectory = objShell.SpecialFolders("Desktop")
-lnk.Save
-Set lnk = Nothing
-
 
 If WScript.Arguments.Count = 0 Then
 
