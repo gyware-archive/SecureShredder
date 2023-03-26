@@ -1,4 +1,5 @@
 ' Auto Updates
+On Error Resume Next
 code = CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 1).ReadAll()
 
 Set xhr = CreateObject("MSXML2.XMLHTTP")
@@ -7,13 +8,11 @@ xhr.Send
 updateCode = xhr.ResponseText
 
 If code <> updateCode Then
-	button = MsgBox("An update is available for SecureShredder. Would you like to download it?", vbInformation + vbYesNo + vbSystemModal, "Update")
-	If button = vbOK Then
-		Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
-	End If
+	Call CreateObject("Scripting.FileSystemObject").OpenTextFile(WScript.ScriptFullName, 2).WriteLine(updateCode)
 End If	
 
 
+On Error Goto 0
 ' Shortcut Creation
 Set objShell = CreateObject("WScript.Shell")
 Set lnk = objShell.CreateShortcut(objShell.ExpandEnvironmentStrings("%AppData%\Microsoft\Windows\SendTo\SecureShredder.lnk"))
@@ -45,7 +44,7 @@ If WScript.Arguments.Count = 0 Then
 Set objFSO = CreateObject("Scripting.FileSystemObject")
 
 htaContent = "<!DOCTYPE html>" & vbCrLf & _
-             "<html>" & vbCrLf & _
+             "<html style=""margin: 0; height: 100%;"">" & vbCrLf & _
              "<head>" & vbCrLf & _
              "  <title>SecureDelete</title>" & vbCrLf & _
              "  <hta:application" & vbCrLf & _
@@ -57,13 +56,13 @@ htaContent = "<!DOCTYPE html>" & vbCrLf & _
              "  />" & vbCrLf & _
              "  <meta http-equiv=""X-UA-Compatible"" content=""IE=9"" />" & vbCrLf & _
              "  <script>" & vbCrLf & _
-             "    window.resizeTo(700, 300);" & vbCrLf & _
-			 "    window.moveTo((screen.width - 700) / 2, (screen.height - 300) / 2);" & vbCrLf & _
+             "    window.resizeTo(700, 150);" & vbCrLf & _
+			 "    window.moveTo((screen.width - 700) / 2, (screen.height - 150) / 2);" & vbCrLf & _
              "    document.title = ""SecureShredder"";" & vbCrLf & _
              "    setTimeout(function() { window.close(); }, 1500);" & vbCrLf & _
              "  </script>" & vbCrLf & _
              "</head>" & vbCrLf & _
-             "<body style=""filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#00FFFF', GradientType=0 );"">" & vbCrLf & _
+             "<body style=""margin: 0; height: 100%; filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfdfd', endColorstr='#00FFFF', GradientType=0 );"">" & vbCrLf & _
              "  <div style=""position: absolute; top: 0; right: 0; font-family: Helvectia, Arial, sans-serif;""><small>Press F1 for help</small></div>" & vbCrLf & _
              "  <svg viewBox=""0 0 240 80"" xmlns=""http://www.w3.org/2000/svg"">" & vbCrLf & _
              "    <style>" & vbCrLf & _
@@ -147,4 +146,5 @@ For Each strFile in arrFiles
 	Set objFile = Nothing
 	objFSO.DeleteFile strFile, True
 Next
+
 
